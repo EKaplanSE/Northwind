@@ -19,10 +19,8 @@ export class ProductComponent implements OnInit {
     this.activatedRoute.params.subscribe(params=>{
       if(params["categoryId"]){
         this.getProductsByCategory(params["categoryId"]);
-        console.log("getProductsByCategory params:"+params["categoryId"])
       }else{
         this.getProducts();
-        console.log("getProducts")
       }
     })
   }
