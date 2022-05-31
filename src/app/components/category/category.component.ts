@@ -27,10 +27,11 @@ export class CategoryComponent implements OnInit {
   }
 
   setCurrentCategory(category:Category){
-    if (!category) //{
-      this.currentCategory = category;
+    // if (!category) {
+    //   this.currentCategory.categoryId = 0;
+    //   this.currentCategory.categoryName = "";
     // }else{
-    //   this.currentCategory = category;
+      this.currentCategory = category;
     // }
   }
 
