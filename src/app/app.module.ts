@@ -10,6 +10,9 @@ import { NaviComponent } from './components/navi/navi.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
+import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -17,13 +20,17 @@ import { VatAddedPipe } from './pipes/vat-added.pipe';
     ProductComponent,
     CategoryComponent,
     NaviComponent,
-    VatAddedPipe
+    VatAddedPipe,
+    FilterPipePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+      positionClass:"toast-bottom-right"
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
