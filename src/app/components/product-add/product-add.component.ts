@@ -37,13 +37,21 @@ export class ProductAddComponent implements OnInit {
   add() {
     if (this.productAddForm.valid) {
       let productModel = Object.assign({}, this.productAddForm.value);
-      this.productService.add(productModel).subscribe(response=>{
-        this.toastrService.success(response.message,"Başarılı");
-      },responseError=>{
-        for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {
-          this.toastrService.error(responseError.error.ValidationErrors[i].ErrorMessage,"Hata");
+      this.productService.add(productModel).subscribe(
+        (response) => {
+          this.toastrService.success(response.message, 'Başarılı');
+        },
+        (responseError) => {
+          console.log(responseError);
+          if (responseError.error.ValidationErrors) {
+            for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {
+              this.toastrService.error(responseError.error.ValidationErrors[i].ErrorMessage,'Hata');
+            }
+          } else {
+            this.toastrService.error(responseError.error.message,'Hata'); 
+          }
         }
-      });
+      );
     } else {
       this.toastrService.error('Formunuz eksik', 'Dikkat');
     }
